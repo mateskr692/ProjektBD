@@ -13,10 +13,10 @@ namespace Data.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RepairSystemEntities : DbContext
+    public partial class RepairSystemContext : DbContext
     {
-        public RepairSystemEntities()
-            : base("name=RepairSystemEntities")
+        public RepairSystemContext()
+            : base("name=RepairSystemContext")
         {
         }
     

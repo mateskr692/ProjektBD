@@ -420,7 +420,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RepairSystemEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RepairSystemContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activities" EntityType="Self.Activity" />
           <EntitySet Name="ActivityTypes" EntityType="Self.ActivityType" />
           <EntitySet Name="Clients" EntityType="Self.Client" />
@@ -467,7 +467,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DataDALStoreContainer" CdmEntityContainer="RepairSystemEntities">
+        <EntityContainerMapping StorageEntityContainer="DataDALStoreContainer" CdmEntityContainer="RepairSystemContext">
           <EntitySetMapping Name="Activities">
             <EntityTypeMapping TypeName="Data.DAL.Activity">
               <MappingFragment StoreEntitySet="Activities">
