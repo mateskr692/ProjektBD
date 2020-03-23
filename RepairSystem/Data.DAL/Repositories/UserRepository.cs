@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace Data.DAL.Repositories
 {
@@ -10,6 +6,11 @@ namespace Data.DAL.Repositories
     {
         public UserRepository( RepairSystemContext ctx ) : base( ctx )
         {
+        }
+
+        public User GetByUsername( string username )
+        {
+            return this.Context.Users.Where( u => u.username.Equals( username ) ).SingleOrDefault();
         }
     }
 }

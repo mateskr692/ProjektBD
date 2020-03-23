@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.DAL.Repositories
+namespace Common.Enums
 {
-    public interface IUserRepository : IRepository<User>
+    public enum ResultStatus
     {
-        User GetByUsername( string username );
+        Succeded,
+        Failed
     }
 }

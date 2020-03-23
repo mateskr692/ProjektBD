@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,10 +44,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Interfaces\IUserService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\Buisness.Contracts\Buisness.Contracts.csproj">
+      <Project>{9C3AA05B-F654-4FE9-B2DD-1A2E6A79ED26}</Project>
+      <Name>Buisness.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{959E5EE9-CB39-41F4-B514-29AD043D412E}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Data.DAL\Data.DAL.csproj">
+      <Project>{6806E298-BF8F-441F-8DF5-810EB6F708F1}</Project>
+      <Name>Data.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

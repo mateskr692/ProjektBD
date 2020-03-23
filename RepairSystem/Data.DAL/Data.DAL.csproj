@@ -62,6 +62,7 @@
     <Compile Include="Client.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CodesDictionary.cs" />
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -125,7 +126,12 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{959E5EE9-CB39-41F4-B514-29AD043D412E}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
