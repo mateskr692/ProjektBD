@@ -5,7 +5,7 @@ namespace Buisness.Core.Services
 {
     public interface IUserService
     {
-        WResult<UserInfoModel> Login( UserLoginModel userLoginModel );
+        WResult<UserInfoModel> ValidateUserCredentials( UserLoginModel userLoginModel );
 
     }
 }

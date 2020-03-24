@@ -14,11 +14,30 @@ namespace Presentation.App
     /// </summary>
     public partial class App : Application
     {
+        private Window _currentwindow { get; set; }
+
         protected override void OnStartup( StartupEventArgs e )
         {
             base.OnStartup( e );
             var window = new MainWindow();
             window.Show();
         }
+
+        protected void Login()
+        {
+            //close the login window
+            //read the returned userInfo
+            //set it to application Context
+            //show proper window according to the role type
+        }
+
+        protected void Logoff()
+        {
+            //close surrent window
+            //deauthorize user - remove his credential from application context
+            //show login window
+        }
+
+
     }
 }

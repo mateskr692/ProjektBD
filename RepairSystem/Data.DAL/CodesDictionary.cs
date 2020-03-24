@@ -9,25 +9,25 @@ namespace Data.DAL
 {
     public static class CodesDictionary
     {
-        public static UserRoles RoleType( string role )
+        public static UserRole RoleType( string role )
         {
             switch ( role )
             {
-                case ( "WRK" ): return UserRoles.Worker;
-                case ( "MAN" ): return UserRoles.Manager;
-                case ( "ADM" ): return UserRoles.Administrator;
+                case ( "WRK" ): return UserRole.Worker;
+                case ( "MAN" ): return UserRole.Manager;
+                case ( "ADM" ): return UserRole.Administrator;
 
                 default: throw new Exception();
             }
         }
 
-        public static string RoleType( UserRoles role )
+        public static string RoleType( UserRole role )
         {
             switch ( role )
             {
-                case ( UserRoles.Administrator ): return "ADM";
-                case ( UserRoles.Manager ): return "MAN";
-                case ( UserRoles.Worker ): return "WRK";
+                case ( UserRole.Administrator ): return "ADM";
+                case ( UserRole.Manager ): return "MAN";
+                case ( UserRole.Worker ): return "WRK";
 
                 default: throw new Exception();
             }

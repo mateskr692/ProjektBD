@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Enums\ActivityStatus.cs" />
     <Compile Include="Enums\ResultStatus.cs" />
-    <Compile Include="Enums\UserRoles.cs" />
+    <Compile Include="Enums\UserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

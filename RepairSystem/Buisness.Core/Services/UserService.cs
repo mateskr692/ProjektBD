@@ -14,7 +14,7 @@ namespace Buisness.Core.Services
         const string UserDoesNotExistErrorMessage = "No user with this name exists";
         const string InvalidPasswordErrorMessage = "Invalid Password";
 
-        public WResult<UserInfoModel> Login( UserLoginModel userLoginModel )
+        public WResult<UserInfoModel> ValidateUserCredentials( UserLoginModel userLoginModel )
         {
             if ( userLoginModel == null || string.IsNullOrEmpty(userLoginModel.Login) || string.IsNullOrEmpty(userLoginModel.Password) )
                 return new WResult<UserInfoModel>( InvalidDataErrorMessage );

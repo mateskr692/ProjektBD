@@ -11,6 +11,6 @@ namespace Buisness.Contracts.Models
     {
         public long Id { get; set; }
         public string UserName { get; set; }
-        public UserRoles Role { get; set; }
+        public UserRole Role { get; set; }
     }
 }
