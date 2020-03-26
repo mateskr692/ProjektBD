@@ -6,8 +6,8 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/Styles.xamal"/>
-                <ResourceDictionary Source="/Resources/ViewModelBindings"/>
+                <ResourceDictionary Source="/Resources/Styles.xaml"/>
+                <ResourceDictionary Source="/Resources/ViewModelBindings.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         
