@@ -17,9 +17,9 @@ namespace Presentation.App.Views
     /// <summary>
     /// Logika interakcji dla klasy Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class LoginWindow : Window
     {
-        public Window1()
+        public LoginWindow()
         {
             InitializeComponent();
         }
