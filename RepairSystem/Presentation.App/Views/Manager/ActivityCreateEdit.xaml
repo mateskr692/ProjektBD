@@ -1,12 +1,11 @@
-﻿<Window x:Class="Presentation.App.Views.MainWindow"
+﻿<Window x:Class="Presentation.App.Views.Manager.ActivityCreateEdit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Presentation.App"
-        
+        xmlns:local="clr-namespace:Presentation.App.Views.Manager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="400">
+        Title="Edit Activity" Height="250" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -14,7 +13,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
+        <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -38,24 +37,27 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="5"/>
                             <RowDefinition Height="auto"/>
+                            <RowDefinition Height="5"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap">Object</TextBlock>
-                        <TextBlock Grid.Column="2" Grid.Row="0" TextWrapping="Wrap">Omega Speedmaster</TextBlock>
-                        <TextBlock Grid.Column="0" Grid.Row="2" TextWrapping="Wrap">Manager</TextBlock>
-                        <TextBlock Grid.Column="2" Grid.Row="2" TextWrapping="Wrap">Jane Doe</TextBlock>
+                        <TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap">Queue position</TextBlock>
+                        <TextBox Grid.Column="2" Grid.Row="0"/>
+                        <TextBlock Grid.Column="0" Grid.Row="2" TextWrapping="Wrap">Worker</TextBlock>
+                        <TextBox Grid.Column="2" Grid.Row="2"/>
+                        <Button Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right">-&gt;</Button>
                     </Grid>
                     <Rectangle Height="20"/>
                     <TextBlock>Description:</TextBlock>
-                    <Border BorderThickness="1" BorderBrush="{StaticResource BrushBgLevel2}">
-                        <TextBlock MinHeight="50" TextWrapping="Wrap">Very noice watch indeed! Needs some cleanging though...</TextBlock>
-                    </Border>
+                    <TextBox MinHeight="50"/>
                 </StackPanel>
             </Grid>
         </ScrollViewer>
         <Rectangle Grid.Row="1" Height="2" HorizontalAlignment="Stretch" Fill="{StaticResource BrushBgLevel2}"/>
-
-        <Button Grid.Row="2" HorizontalAlignment="Center" Padding="5" Width ="100" Margin="3">Close</Button>
-
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Padding="5" Width ="100" Margin="3">Save</Button>
+            <Rectangle Width="50"/>
+            <Button Padding="5" Width ="100" Margin="3">Cancel</Button>
+        </StackPanel>
     </Grid>
 </Window>

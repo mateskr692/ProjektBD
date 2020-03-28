@@ -2,11 +2,17 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Presentation.App.Resources">
     <!--Colors-->
-    <Color x:Key="ColorPrimary1">#339933</Color>
-    <Color x:Key="ColorPrimary2">#194d19</Color>
-    
+    <Color x:Key="DarkGray">#ffffffff</Color>
+    <Color x:Key="White5p">#0c121212</Color>
+    <Color x:Key="White9p">#16121212</Color>
+    <Color x:Key="White15p">#26121212</Color>
+    <Color x:Key="White80p">#cc121212</Color>
+
     <!--Background-->
-    <SolidColorBrush x:Key="BrushPrimary1" Color="{StaticResource ColorPrimary1}"/>
-    <SolidColorBrush x:Key="BrushPrimary2" Color="{StaticResource ColorPrimary2}"/>
+    <SolidColorBrush x:Key="BrushBg" Color="{StaticResource DarkGray}"/>
+    <SolidColorBrush x:Key="BrushBgLevel0" Color="{StaticResource White5p}"/>
+    <SolidColorBrush x:Key="BrushBgLevel1" Color="{StaticResource White9p}"/>
+    <SolidColorBrush x:Key="BrushBgLevel2" Color="{StaticResource White15p}"/>
+    <SolidColorBrush x:Key="BrushText" Color="{StaticResource White80p}"/>
 
 </ResourceDictionary>
