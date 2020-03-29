@@ -22,7 +22,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="2"/>
-                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*" MinWidth="250"/>
                     </Grid.ColumnDefinitions>
 
                     <controls:ActivitiesPanel Grid.Column="0"/>

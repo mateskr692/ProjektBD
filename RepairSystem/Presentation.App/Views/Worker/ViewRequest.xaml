@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Presentation.App.Views.Worker"
         mc:Ignorable="d"
-        Title="Request information" Height="250" Width="400">
+        Title="Request information" Height="250" Width="400" MinWidth="250">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

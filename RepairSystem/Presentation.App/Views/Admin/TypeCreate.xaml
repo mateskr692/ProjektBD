@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Presentation.App.Views.Admin"
         
         mc:Ignorable="d"
-       Title="Create Type" Height="250" Width="400">
+       Title="Create Type" Height="250" Width="400" MinWidth="250">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

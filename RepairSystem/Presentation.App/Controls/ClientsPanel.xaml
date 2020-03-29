@@ -48,18 +48,15 @@
                 <TextBlock>Client 7</TextBlock>
                 <TextBlock>Client 8</TextBlock>
             </ListView>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="5">
                 <Button Grid.Column="1" Content="&lt;"/>
-                <Button Grid.Column="2" Content="x/y"/>
+                <Label>1</Label>
+                <Label>-</Label>
+                <Label>4</Label>
+                <Label>-</Label>
+                <Label>9</Label>
                 <Button Grid.Column="3" Content="&gt;"/>
-            </Grid>
+            </StackPanel>
         </Grid>
         <GridSplitter Grid.Row="1" Height="2" HorizontalAlignment="Stretch" Background="{StaticResource BrushBgLevel2}"/>
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"/>
