@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Presentation.App.Views;
+using Presentation.App.Views.Manager;
 
 namespace Presentation.App
 {
@@ -19,7 +20,7 @@ namespace Presentation.App
         protected override void OnStartup( StartupEventArgs e )
         {
             base.OnStartup( e );
-            var window = new MainWindow();
+            var window = new ManagerMainWindow();
             window.Show();
         }
 

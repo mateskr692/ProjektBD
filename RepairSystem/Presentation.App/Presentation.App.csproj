@@ -55,11 +55,111 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\ActivitiesPanel.xaml.cs">
+      <DependentUpon>ActivitiesPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WorkersPanel.xaml.cs">
+      <DependentUpon>WorkersPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RequestsPanel.xaml.cs">
+      <DependentUpon>RequestsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectsPanel.xaml.cs">
+      <DependentUpon>ObjectsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ClientsPanel.xaml.cs">
+      <DependentUpon>ClientsPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\AdminMainWindow.xaml.cs">
+      <DependentUpon>AdminMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\TypeCreate.xaml.cs">
+      <DependentUpon>TypeCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\UserCreate.xaml.cs">
+      <DependentUpon>UserCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\UserEdit.xaml.cs">
+      <DependentUpon>UserEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\ClientObjects.xaml.cs">
+      <DependentUpon>ClientObjects.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\ActivityCreateEdit.xaml.cs">
+      <DependentUpon>ActivityCreateEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\RequestCreate.xaml.cs">
+      <DependentUpon>RequestCreate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\ManagerMainWindow.xaml.cs">
+      <DependentUpon>ManagerMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\ObjectCreateEdit.xaml.cs">
+      <DependentUpon>ObjectCreateEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\RequestActivities.xaml.cs">
+      <DependentUpon>RequestActivities.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\WorkerBrowse.xaml.cs">
+      <DependentUpon>WorkerBrowse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Worker\FinishActivity.xaml.cs">
+      <DependentUpon>FinishActivity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Worker\WorkerMainWindow.xaml.cs">
+      <DependentUpon>WorkerMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Worker\ViewRequest.xaml.cs">
+      <DependentUpon>ViewRequest.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\ActivitiesPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\WorkersPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\RequestsPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ObjectsPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ClientsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UserPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\ViewModelBindings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\AdminMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\TypeCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\UserCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\UserEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -73,11 +173,58 @@
     </Compile>
     <Compile Include="Code\ApplicationContext.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Controls\UserPanel.xaml.cs">
+      <DependentUpon>UserPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\ClientObjects.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\ActivityCreateEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Manager\RequestCreate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\ManagerMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\ObjectCreateEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\RequestActivities.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\WorkerBrowse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Worker\FinishActivity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Worker\WorkerMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Worker\ViewRequest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
