@@ -15,6 +15,7 @@ namespace Buisness.Contracts
 
         public WResult()
         {
+            this.Status = ResultStatus.Succeded;
         }
         public WResult(string error)
         {
@@ -35,7 +36,7 @@ namespace Buisness.Contracts
         public TData Data { get; set; }
 
 
-        public WResult() : base()
+        public WResult()
         {
         }
         public WResult( string error ) : base( error )

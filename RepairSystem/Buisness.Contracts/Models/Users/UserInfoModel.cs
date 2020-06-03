@@ -9,8 +9,8 @@ namespace Buisness.Contracts.Models
 {
     public class UserInfoModel
     {
-        public long Id { get; set; }
         public string UserName { get; set; }
+        public string FullName { get; set; }
         public UserRole Role { get; set; }
     }
 }

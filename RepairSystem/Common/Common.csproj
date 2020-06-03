@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodesDictionary.cs" />
+    <Compile Include="Enums\AccountStatus.cs" />
     <Compile Include="Enums\ActivityStatus.cs" />
     <Compile Include="Enums\ResultStatus.cs" />
     <Compile Include="Enums\UserRole.cs" />

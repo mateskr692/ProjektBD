@@ -8,13 +8,13 @@
 	[finish_cancel_date]	DATETIME		NULL,
 
 	[object_no]				BIGINT			NOT NULL,
-	[manager_id]			BIGINT			NOT NULL,
+	[manager]				NVARCHAR(20)	NOT NULL,
 
-	CHECK( [status] IN('OPN', 'PRO', 'CAN', 'FIN') ),
+	CHECK( [status] IN('OPN', 'CAN', 'FIN') ),
 	 
 	CONSTRAINT [PK_Requests]			PRIMARY KEY( [request_id] ),
 	CONSTRAINT [FK_Requests_Objects]	FOREIGN KEY( [object_no] )		REFERENCES [Objects]( [object_no] ),
-	CONSTRAINT [FK_Requests_Personel]	FOREIGN KEY( [manager_id] )		REFERENCES [Personel]( [personel_id] )
+	CONSTRAINT [FK_Requests_Personel]	FOREIGN KEY( [manager] )		REFERENCES [Personel]( [username] )
 
 
 )

@@ -32,6 +32,7 @@ namespace Data.DAL
         public virtual DbSet<ObjectType> ObjectTypes { get; set; }
         public virtual DbSet<Personel> Personels { get; set; }
         public virtual DbSet<Request> Requests { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

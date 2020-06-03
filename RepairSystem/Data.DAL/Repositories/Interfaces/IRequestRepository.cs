@@ -8,5 +8,9 @@ namespace Data.DAL.Repositories
 {
     public interface IRequestRepository : IRepository<Request>
     {
+        IEnumerable<Request> GetRequests( string client, string manager, string obj, string status, DateTime? date );
+        Request GetRequest( long Id );
+        void FinishRequest( long Id, string result );
+        void CancelRequest( long Id, string result );
     }
 }

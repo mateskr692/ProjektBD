@@ -10,13 +10,13 @@
 
 	[activity_code]			CHAR(5)			NOT NULL,
 	[request_id]			BIGINT			NOT NULL,
-	[worker_id]				BIGINT			NOT NULL,
+	[worker]				NVARCHAR(20)	NULL,
 
 	CHECK( [status] IN('OPN', 'PRO', 'CAN', 'FIN') ),
 
 	CONSTRAINT [PK_Activities]					PRIMARY KEY( [activity_id] ),
 	CONSTRAINT [FK_Activities_ActivityTypes]	FOREIGN KEY( [activity_code] )	REFERENCES [ActivityTypes]( [activity_code] ),
 	CONSTRAINT [FK_Activities_Requests]			FOREIGN KEY( [request_id] )		REFERENCES [Requests]( [request_id] ),
-	CONSTRAINT [FK_Activities_Personel]			FOREIGN KEY( [worker_id] )		REFERENCES [Personel]( [personel_id] )
+	CONSTRAINT [FK_Activities_Personel]			FOREIGN KEY( [worker] )			REFERENCES [Personel]( [username] )
 
 )

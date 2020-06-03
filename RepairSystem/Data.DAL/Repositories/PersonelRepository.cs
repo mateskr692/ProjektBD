@@ -11,5 +11,10 @@ namespace Data.DAL.Repositories
         public PersonelRepository( RepairSystemContext ctx ) : base( ctx )
         {
         }
+
+        public Personel Get( string username )
+        {
+            return this.Context.Personels.Where( p => p.username == username ).SingleOrDefault();
+        }
     }
 }

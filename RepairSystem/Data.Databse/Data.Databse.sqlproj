@@ -59,6 +59,8 @@
     <Folder Include="Properties" />
     <Folder Include="dbo" />
     <Folder Include="dbo\tables" />
+    <Folder Include="scripts" />
+    <Folder Include="dbo\procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\tables\Requests.sql" />
@@ -69,5 +71,9 @@
     <Build Include="dbo\tables\Objects.sql" />
     <Build Include="dbo\tables\ObjectTypes.sql" />
     <Build Include="dbo\tables\ActivityTypes.sql" />
+    <Build Include="dbo\procedures\AddUser.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="scripts\SampleData.sql" />
   </ItemGroup>
 </Project>

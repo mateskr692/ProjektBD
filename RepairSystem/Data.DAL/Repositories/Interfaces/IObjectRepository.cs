@@ -8,5 +8,7 @@ namespace Data.DAL.Repositories
 {
     public interface IObjectRepository : IRepository<Object>
     {
+        IEnumerable<Object> GetClientObjects( long clientId, string nameFilter );
+        Object GetById( long Id );
     }
 }

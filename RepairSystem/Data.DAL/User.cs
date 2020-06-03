@@ -14,7 +14,6 @@ namespace Data.DAL
     
     public partial class User
     {
-        public long personel_id { get; set; }
         public string username { get; set; }
         public byte[] password { get; set; }
         public byte[] password_salt { get; set; }

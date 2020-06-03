@@ -23,7 +23,7 @@ namespace Data.DAL
         public Nullable<System.DateTime> finish_cancel_date { get; set; }
         public string activity_code { get; set; }
         public long request_id { get; set; }
-        public long worker_id { get; set; }
+        public string worker { get; set; }
     
         public virtual ActivityType ActivityType { get; set; }
         public virtual Personel Personel { get; set; }

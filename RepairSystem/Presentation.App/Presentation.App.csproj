@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -14,6 +15,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,7 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,83 +65,183 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\ActivitiesPanel.xaml.cs">
-      <DependentUpon>ActivitiesPanel.xaml</DependentUpon>
+    <Compile Include="Controls\Filters\WorkerActivitiesSearchPanel.xaml.cs">
+      <DependentUpon>WorkerActivitiesSearchPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WorkersPanel.xaml.cs">
+    <Compile Include="Controls\Filters\ActivitiesSearchPanel.xaml.cs">
+      <DependentUpon>ActivitiesSearchPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filters\ObjectSearchPanel.xaml.cs">
+      <DependentUpon>ObjectSearchPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filters\ObjectTypesSearchPanel.xaml.cs">
+      <DependentUpon>ObjectTypesSearchPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filters\ActivityTypesSearchPanel.xaml.cs">
+      <DependentUpon>ActivityTypesSearchPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filters\UserSearchPanel.xaml.cs">
+      <DependentUpon>UserSearchPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Filters\WorkersPanel.xaml.cs">
       <DependentUpon>WorkersPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\RequestsPanel.xaml.cs">
+    <Compile Include="Controls\Filters\RequestsPanel.xaml.cs">
       <DependentUpon>RequestsPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ObjectsPanel.xaml.cs">
-      <DependentUpon>ObjectsPanel.xaml</DependentUpon>
+    <Compile Include="Controls\Filters\ClientsSearchPanel.xaml.cs">
+      <DependentUpon>ClientsSearchPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ClientsPanel.xaml.cs">
-      <DependentUpon>ClientsPanel.xaml</DependentUpon>
+    <Compile Include="Security\AuthenticationManager.cs" />
+    <Compile Include="ViewModels\ActivityTypes\SelectActivityTypeViewModel.cs" />
+    <Compile Include="ViewModels\ClientObjects\EditClientObjectViewModel.cs" />
+    <Compile Include="ViewModels\ClientObjects\AddClientObjectViewModel.cs" />
+    <Compile Include="ViewModels\ClientObjects\SelectClientObjectViewModel.cs" />
+    <Compile Include="ViewModels\Clients\SelectClientViewModel.cs" />
+    <Compile Include="ViewModels\ObjectTypes\AddObjectTypeViewModel.cs" />
+    <Compile Include="ViewModels\ObjectTypes\SelectObjectTypeViewModel.cs" />
+    <Compile Include="ViewModels\RequestActivities\AddRequestActivityViewModel.cs" />
+    <Compile Include="ViewModels\RequestActivities\CancelRequestActivityViewModel.cs" />
+    <Compile Include="ViewModels\RequestActivities\FinishRequestActivityViewModel.cs" />
+    <Compile Include="ViewModels\RequestActivities\RequestActivitiesViewModel.cs" />
+    <Compile Include="ViewModels\Requests\ActivityRequestViewModel.cs" />
+    <Compile Include="ViewModels\Requests\AddRequestViewModel.cs" />
+    <Compile Include="ViewModels\Requests\CancelRequestViewModel.cs" />
+    <Compile Include="ViewModels\Requests\FinishRequestViewModel.cs" />
+    <Compile Include="ViewModels\Users\AddUserViewModel.cs" />
+    <Compile Include="ViewModels\Users\ChangeUserPasswordViewModel.cs" />
+    <Compile Include="ViewModels\AdminMainViewModel.cs" />
+    <Compile Include="ViewModels\ActivityTypes\AddActivityTypeViewModel.cs" />
+    <Compile Include="ViewModels\ObjectTypes\EditObjectTypeViewModel.cs" />
+    <Compile Include="ViewModels\ActivityTypes\EditActivityTypeViewModel.cs" />
+    <Compile Include="ViewModels\Users\EditUserViewModel.cs" />
+    <Compile Include="ViewModels\ClientObjects\ClientObjectsMainViewModel.cs" />
+    <Compile Include="ViewModels\Clients\EditClientViewModel .cs" />
+    <Compile Include="ViewModels\Clients\AddClientViewModel.cs" />
+    <Compile Include="ViewModels\ManagerMainViewModel.cs" />
+    <Compile Include="ViewModels\Users\SelectWorkerViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserLoginViewModel.cs" />
+    <Compile Include="ViewModels\WorkerMainViewModel.cs" />
+    <Compile Include="Views\ActivityTypes\SelectActivityTypeWindow.xaml.cs">
+      <DependentUpon>SelectActivityTypeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\AdminMainWindow.xaml.cs">
+    <Compile Include="Views\ClientObjects\EditClientObjectsWindow.xaml.cs">
+      <DependentUpon>EditClientObjectsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClientObjects\SelectClientObjectWindow.xaml.cs">
+      <DependentUpon>SelectClientObjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clients\SelectClientWindow.xaml.cs">
+      <DependentUpon>SelectClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestActivities\CancelRequestActivityWindow.xaml.cs">
+      <DependentUpon>CancelRequestActivityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestActivities\FinishRequestActivityWindow.xaml.cs">
+      <DependentUpon>FinishRequestActivityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Requests\AddRequestWindow.xaml.cs">
+      <DependentUpon>AddRequestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ObjectTypes\AddObjectTypeWindow.xaml.cs">
+      <DependentUpon>AddObjectTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminMainWindow.xaml.cs">
       <DependentUpon>AdminMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\TypeCreate.xaml.cs">
-      <DependentUpon>TypeCreate.xaml</DependentUpon>
+    <Compile Include="Views\ObjectTypes\SelectObjectTypeWindow.xaml.cs">
+      <DependentUpon>SelectObjectTypeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\UserCreate.xaml.cs">
-      <DependentUpon>UserCreate.xaml</DependentUpon>
+    <Compile Include="Views\Requests\CancelRequestWindow.xaml.cs">
+      <DependentUpon>CancelRequestWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\UserEdit.xaml.cs">
-      <DependentUpon>UserEdit.xaml</DependentUpon>
+    <Compile Include="Views\Requests\FinishRequestWindow.xaml.cs">
+      <DependentUpon>FinishRequestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\ChangePasswordWindow.xaml.cs">
+      <DependentUpon>ChangePasswordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ActivityTypes\AddActivityTypeWindow.xaml.cs">
+      <DependentUpon>AddActivityTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ObjectTypes\EditObjectTypeWindow.xaml.cs">
+      <DependentUpon>EditObjectTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ActivityTypes\EditActivityTypeWindow.xaml.cs">
+      <DependentUpon>EditActivityTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\AddUserWindow.xaml.cs">
+      <DependentUpon>AddUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Users\EditUserWindow.xaml.cs">
+      <DependentUpon>EditUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Manager\ClientObjects.xaml.cs">
-      <DependentUpon>ClientObjects.xaml</DependentUpon>
+    <Compile Include="Views\ClientObjects\AddClientObjectsWindow.xaml.cs">
+      <DependentUpon>AddClientObjectsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Manager\ActivityCreateEdit.xaml.cs">
-      <DependentUpon>ActivityCreateEdit.xaml</DependentUpon>
+    <Compile Include="Views\Clients\AddClientWindow.xaml.cs">
+      <DependentUpon>AddClientWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Manager\RequestCreate.xaml.cs">
-      <DependentUpon>RequestCreate.xaml</DependentUpon>
+    <Compile Include="Views\Clients\EditClientWindow.xaml.cs">
+      <DependentUpon>EditClientWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Manager\ManagerMainWindow.xaml.cs">
+    <Compile Include="Views\ClientObjects\ClientObjectsWindow.xaml.cs">
+      <DependentUpon>ClientObjectsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestActivities\AddRequestActivityWindow.xaml.cs">
+      <DependentUpon>AddRequestActivityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ManagerMainWindow.xaml.cs">
       <DependentUpon>ManagerMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Manager\ObjectCreateEdit.xaml.cs">
-      <DependentUpon>ObjectCreateEdit.xaml</DependentUpon>
+    <Compile Include="Views\RequestActivities\RequestActivitiesWindow.xaml.cs">
+      <DependentUpon>RequestActivitiesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Manager\RequestActivities.xaml.cs">
-      <DependentUpon>RequestActivities.xaml</DependentUpon>
+    <Compile Include="Views\Users\SelectWorkerWindow.xaml.cs">
+      <DependentUpon>SelectWorkerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Manager\WorkerBrowse.xaml.cs">
-      <DependentUpon>WorkerBrowse.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Worker\FinishActivity.xaml.cs">
-      <DependentUpon>FinishActivity.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Worker\WorkerMainWindow.xaml.cs">
+    <Compile Include="Views\WorkerMainWindow.xaml.cs">
       <DependentUpon>WorkerMainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Worker\ViewRequest.xaml.cs">
-      <DependentUpon>ViewRequest.xaml</DependentUpon>
+    <Compile Include="Views\Requests\ActivityRequestWindow.xaml.cs">
+      <DependentUpon>ActivityRequestWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Controls\ActivitiesPanel.xaml">
+    <Page Include="Controls\Filters\WorkerActivitiesSearchPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\WorkersPanel.xaml">
+    <Page Include="Controls\Filters\ActivitiesSearchPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\RequestsPanel.xaml">
+    <Page Include="Controls\Filters\ObjectSearchPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\ObjectsPanel.xaml">
+    <Page Include="Controls\Filters\ObjectTypesSearchPanel.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\ClientsPanel.xaml">
+    <Page Include="Controls\Filters\ActivityTypesSearchPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Filters\UserSearchPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Filters\WorkersPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Filters\RequestsPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Filters\ClientsSearchPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,81 +257,128 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Admin\AdminMainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Admin\TypeCreate.xaml">
+    <Page Include="Views\ActivityTypes\SelectActivityTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Admin\UserCreate.xaml">
+    <Page Include="Views\ClientObjects\EditClientObjectsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ClientObjects\SelectClientObjectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Admin\UserEdit.xaml">
+    <Page Include="Views\Clients\SelectClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MainWindow.xaml">
+    <Page Include="Views\RequestActivities\CancelRequestActivityWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RequestActivities\FinishRequestActivityWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Requests\AddRequestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ObjectTypes\AddObjectTypeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdminMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ObjectTypes\SelectObjectTypeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Requests\CancelRequestWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Requests\FinishRequestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\ChangePasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ActivityTypes\AddActivityTypeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ObjectTypes\EditObjectTypeWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ActivityTypes\EditActivityTypeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\AddUserWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Users\EditUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Code\ApplicationContext.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Controls\UserPanel.xaml.cs">
       <DependentUpon>UserPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="Views\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Page Include="Views\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Manager\ClientObjects.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Manager\ActivityCreateEdit.xaml">
+    <Page Include="Views\ClientObjects\AddClientObjectsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Manager\RequestCreate.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Manager\ManagerMainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Manager\ObjectCreateEdit.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Manager\RequestActivities.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Manager\WorkerBrowse.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Worker\FinishActivity.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Worker\WorkerMainWindow.xaml">
+    <Page Include="Views\Clients\AddClientWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Worker\ViewRequest.xaml">
+    <Page Include="Views\Clients\EditClientWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ClientObjects\ClientObjectsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RequestActivities\AddRequestActivityWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ManagerMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RequestActivities\RequestActivitiesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Users\SelectWorkerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WorkerMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Requests\ActivityRequestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +401,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -252,12 +410,30 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Folder Include="Views\WorkerViews\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Buisness.Contracts\Buisness.Contracts.csproj">
+      <Project>{9C3AA05B-F654-4FE9-B2DD-1A2E6A79ED26}</Project>
+      <Name>Buisness.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Buisness.Core\Buisness.Core.csproj">
+      <Project>{98EFDEBF-7241-4BF6-826E-167B6BD8EDCE}</Project>
+      <Name>Buisness.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{959E5EE9-CB39-41F4-B514-29AD043D412E}</Project>
       <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

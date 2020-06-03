@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Common.Enums;
+using Presentation.App.Security;
+using Presentation.App.ViewModels;
+using Presentation.App.Views.Admin;
+using Presentation.App.Views.Manager;
+using Presentation.App.Views.Worker;
 
 namespace Presentation.App.Views
 {
@@ -19,9 +26,41 @@ namespace Presentation.App.Views
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private UserLoginViewModel ViewModel { get; set; }
         public LoginWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+
+            this.ViewModel = new UserLoginViewModel();
+            this.ViewModel.CloseWindow += delegate { this.Close(); };
+            this.DataContext = this.ViewModel;
+        }
+
+        public void OnClose( object sender, CancelEventArgs e )
+        {
+            switch( this.ViewModel.Role)
+            {
+                case UserRole.Administrator:
+                    {
+                        var window = new AdminMainWindow();
+                        window.Show();
+                        break;
+                    }
+                case UserRole.Manager:
+                    {
+                        var window = new ManagerMainWindow();
+                        window.Show();
+                        break;
+                    }
+                case UserRole.Worker:
+                    {
+                        var window = new WorkerMainWindow();
+                        window.Show();
+                        break;
+                    }
+                default: break;
+
+            }
         }
     }
 }

@@ -3,7 +3,6 @@
     public enum ActivityStatus
     {
         Open,
-        InProgress,
         Cancelled,
         Finished
     }

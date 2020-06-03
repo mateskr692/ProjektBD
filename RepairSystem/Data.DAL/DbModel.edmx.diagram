@@ -4,23 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d0f7c7b62253413981256edf7830dec4" Name="Diagram1" ZoomLevel="73">
-        <EntityTypeShape EntityType="Data.DAL.Activity" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Data.DAL.ActivityType" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Data.DAL.Client" Width="1.5" PointX="3.5" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Data.DAL.Object" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Data.DAL.ObjectType" Width="1.5" PointX="8.125" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Data.DAL.Personel" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Data.DAL.Request" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Data.DAL.User" Width="1.5" PointX="0.625" PointY="9.25" IsExpanded="true" />
-        <AssociationConnector Association="Data.DAL.FK_Activities_ActivityTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Data.DAL.FK_Activities_Personel" ManuallyRouted="false" />
-        <AssociationConnector Association="Data.DAL.FK_Activities_Requests" ManuallyRouted="false" />
-        <AssociationConnector Association="Data.DAL.FK_Objects_Clients" ManuallyRouted="false" />
-        <AssociationConnector Association="Data.DAL.FK_Objects_ObjectTypes" ManuallyRouted="false" />
-        <AssociationConnector Association="Data.DAL.FK_Requests_Objects" ManuallyRouted="false" />
-        <AssociationConnector Association="Data.DAL.FK_Requests_Personel" ManuallyRouted="false" />
-        <AssociationConnector Association="Data.DAL.FK_Users_Personel" ManuallyRouted="false" />
+      <Diagram DiagramId="ad7f0d8410ad4c8dad6196a1e1390276" Name="Diagram1">
+        <EntityTypeShape EntityType="DBModel.Activity" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.ActivityType" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Client" Width="1.5" PointX="1.5" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Object" Width="1.5" PointX="3.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.ObjectType" Width="1.5" PointX="1.5" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Personel" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Request" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.User" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <AssociationConnector Association="DBModel.FK_Activities_ActivityTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Activities_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Activities_Requests" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Objects_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Objects_ObjectTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Requests_Objects" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Requests_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModel.FK_Users_Personel" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -8,5 +8,10 @@ namespace Data.DAL.Repositories
 {
     public interface IActivityRepository : IRepository<Activity>
     {
+        IEnumerable<Activity> GetActivities( long requestId, string worker, string status, DateTime? date, string type );
+        IEnumerable<Activity> GetWorkerActivities( string worker, DateTime? date, string description );
+        Activity GetActivity( long Id );
+        void FinishActivity( long Id, string result );
+        void CancelActivity( long Id, string result );
     }
 }

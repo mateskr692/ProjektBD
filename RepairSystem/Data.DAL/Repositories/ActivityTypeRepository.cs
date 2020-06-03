@@ -11,5 +11,16 @@ namespace Data.DAL.Repositories
         public ActivityTypeRepository( RepairSystemContext ctx ) : base( ctx )
         {
         }
+
+        public ActivityType GetActivityType( string code )
+        {
+            return this.Context.ActivityTypes.Where( a => a.activity_code == code ).SingleOrDefault();
+        }
+
+        public IEnumerable<ActivityType> GetActivityTypes( string filter )
+        {
+            return this.Context.ActivityTypes.Where( a => a.activity_code.Contains( filter ) || a.activity_name.Contains( filter ) )
+                                             .Take( 10 );
+        }
     }
 }

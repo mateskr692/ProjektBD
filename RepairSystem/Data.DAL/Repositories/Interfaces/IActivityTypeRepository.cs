@@ -8,5 +8,8 @@ namespace Data.DAL.Repositories
 {
     public interface IActivityTypeRepository : IRepository<ActivityType>
     {
+        IEnumerable<ActivityType> GetActivityTypes( string filter );
+        ActivityType GetActivityType( string code );
     }
+
 }

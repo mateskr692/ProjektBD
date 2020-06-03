@@ -8,5 +8,6 @@ namespace Data.DAL.Repositories
 {
     public interface IPersonelRepository : IRepository<Personel>
     {
+        Personel Get( string username );
     }
 }

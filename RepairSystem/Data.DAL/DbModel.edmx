@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Data.DAL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activities">
           <Key>
             <PropertyRef Name="activity_id" />
@@ -18,7 +18,7 @@
           <Property Name="finish_cancel_date" Type="datetime" />
           <Property Name="activity_code" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="request_id" Type="bigint" Nullable="false" />
-          <Property Name="worker_id" Type="bigint" Nullable="false" />
+          <Property Name="worker" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="ActivityTypes">
           <Key>
@@ -55,9 +55,9 @@
         </EntityType>
         <EntityType Name="Personel">
           <Key>
-            <PropertyRef Name="personel_id" />
+            <PropertyRef Name="username" />
           </Key>
-          <Property Name="personel_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -72,14 +72,23 @@
           <Property Name="registration_date" Type="datetime" Nullable="false" />
           <Property Name="finish_cancel_date" Type="datetime" />
           <Property Name="object_no" Type="bigint" Nullable="false" />
-          <Property Name="manager_id" Type="bigint" Nullable="false" />
+          <Property Name="manager" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="personel_id" />
+            <PropertyRef Name="username" />
           </Key>
-          <Property Name="personel_id" Type="bigint" Nullable="false" />
-          <Property Name="username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="password" Type="binary" MaxLength="32" Nullable="false" />
           <Property Name="password_salt" Type="binary" MaxLength="4" Nullable="false" />
           <Property Name="role" Type="char" MaxLength="3" Nullable="false" />
@@ -98,14 +107,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Activities_Personel">
-          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
           <End Role="Activities" Type="Self.Activities" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personel">
-              <PropertyRef Name="personel_id" />
+              <PropertyRef Name="username" />
             </Principal>
             <Dependent Role="Activities">
-              <PropertyRef Name="worker_id" />
+              <PropertyRef Name="worker" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -162,10 +171,10 @@
           <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personel">
-              <PropertyRef Name="personel_id" />
+              <PropertyRef Name="username" />
             </Principal>
             <Dependent Role="Requests">
-              <PropertyRef Name="manager_id" />
+              <PropertyRef Name="manager" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -174,14 +183,14 @@
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Personel">
-              <PropertyRef Name="personel_id" />
+              <PropertyRef Name="username" />
             </Principal>
             <Dependent Role="Users">
-              <PropertyRef Name="personel_id" />
+              <PropertyRef Name="username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DataDALStoreContainer">
+        <EntityContainer Name="DBModelStoreContainer">
           <EntitySet Name="Activities" EntityType="Self.Activities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ActivityTypes" EntityType="Self.ActivityTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
@@ -189,6 +198,7 @@
           <EntitySet Name="ObjectTypes" EntityType="Self.ObjectTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Activities_ActivityTypes" Association="Self.FK_Activities_ActivityTypes">
             <End Role="ActivityTypes" EntitySet="ActivityTypes" />
@@ -223,11 +233,10 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Data.DAL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="activity_id" />
@@ -241,7 +250,7 @@
           <Property Name="finish_cancel_date" Type="DateTime" Precision="3" />
           <Property Name="activity_code" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="request_id" Type="Int64" Nullable="false" />
-          <Property Name="worker_id" Type="Int64" Nullable="false" />
+          <Property Name="worker" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ActivityType" Relationship="Self.FK_Activities_ActivityTypes" FromRole="Activities" ToRole="ActivityTypes" />
           <NavigationProperty Name="Personel" Relationship="Self.FK_Activities_Personel" FromRole="Activities" ToRole="Personel" />
           <NavigationProperty Name="Request" Relationship="Self.FK_Activities_Requests" FromRole="Activities" ToRole="Requests" />
@@ -287,9 +296,9 @@
         </EntityType>
         <EntityType Name="Personel">
           <Key>
-            <PropertyRef Name="personel_id" />
+            <PropertyRef Name="username" />
           </Key>
-          <Property Name="personel_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Activities" Relationship="Self.FK_Activities_Personel" FromRole="Personel" ToRole="Activities" />
@@ -307,17 +316,26 @@
           <Property Name="registration_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="finish_cancel_date" Type="DateTime" Precision="3" />
           <Property Name="object_no" Type="Int64" Nullable="false" />
-          <Property Name="manager_id" Type="Int64" Nullable="false" />
+          <Property Name="manager" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Activities" Relationship="Self.FK_Activities_Requests" FromRole="Requests" ToRole="Activities" />
           <NavigationProperty Name="Object" Relationship="Self.FK_Requests_Objects" FromRole="Requests" ToRole="Objects" />
           <NavigationProperty Name="Personel" Relationship="Self.FK_Requests_Personel" FromRole="Requests" ToRole="Personel" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="personel_id" />
+            <PropertyRef Name="username" />
           </Key>
-          <Property Name="personel_id" Type="Int64" Nullable="false" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="password" Type="Binary" MaxLength="32" FixedLength="true" Nullable="false" />
           <Property Name="password_salt" Type="Binary" MaxLength="4" FixedLength="true" Nullable="false" />
           <Property Name="role" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
@@ -337,14 +355,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Activities_Personel">
-          <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
           <End Role="Activities" Type="Self.Activity" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personel">
-              <PropertyRef Name="personel_id" />
+              <PropertyRef Name="username" />
             </Principal>
             <Dependent Role="Activities">
-              <PropertyRef Name="worker_id" />
+              <PropertyRef Name="worker" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -401,10 +419,10 @@
           <End Role="Requests" Type="Self.Request" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Personel">
-              <PropertyRef Name="personel_id" />
+              <PropertyRef Name="username" />
             </Principal>
             <Dependent Role="Requests">
-              <PropertyRef Name="manager_id" />
+              <PropertyRef Name="manager" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -413,10 +431,10 @@
           <End Role="Users" Type="Self.User" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Personel">
-              <PropertyRef Name="personel_id" />
+              <PropertyRef Name="username" />
             </Principal>
             <Dependent Role="Users">
-              <PropertyRef Name="personel_id" />
+              <PropertyRef Name="username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -428,6 +446,7 @@
           <EntitySet Name="ObjectTypes" EntityType="Self.ObjectType" />
           <EntitySet Name="Personels" EntityType="Self.Personel" />
           <EntitySet Name="Requests" EntityType="Self.Request" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_Activities_ActivityTypes" Association="Self.FK_Activities_ActivityTypes">
             <End Role="ActivityTypes" EntitySet="ActivityTypes" />
@@ -467,9 +486,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DataDALStoreContainer" CdmEntityContainer="RepairSystemContext">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="RepairSystemContext">
           <EntitySetMapping Name="Activities">
-            <EntityTypeMapping TypeName="Data.DAL.Activity">
+            <EntityTypeMapping TypeName="DBModel.Activity">
               <MappingFragment StoreEntitySet="Activities">
                 <ScalarProperty Name="activity_id" ColumnName="activity_id" />
                 <ScalarProperty Name="sequance_no" ColumnName="sequance_no" />
@@ -480,12 +499,12 @@
                 <ScalarProperty Name="finish_cancel_date" ColumnName="finish_cancel_date" />
                 <ScalarProperty Name="activity_code" ColumnName="activity_code" />
                 <ScalarProperty Name="request_id" ColumnName="request_id" />
-                <ScalarProperty Name="worker_id" ColumnName="worker_id" />
+                <ScalarProperty Name="worker" ColumnName="worker" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ActivityTypes">
-            <EntityTypeMapping TypeName="Data.DAL.ActivityType">
+            <EntityTypeMapping TypeName="DBModel.ActivityType">
               <MappingFragment StoreEntitySet="ActivityTypes">
                 <ScalarProperty Name="activity_code" ColumnName="activity_code" />
                 <ScalarProperty Name="activity_name" ColumnName="activity_name" />
@@ -493,7 +512,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Clients">
-            <EntityTypeMapping TypeName="Data.DAL.Client">
+            <EntityTypeMapping TypeName="DBModel.Client">
               <MappingFragment StoreEntitySet="Clients">
                 <ScalarProperty Name="client_id" ColumnName="client_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -504,7 +523,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Objects">
-            <EntityTypeMapping TypeName="Data.DAL.Object">
+            <EntityTypeMapping TypeName="DBModel.Object">
               <MappingFragment StoreEntitySet="Objects">
                 <ScalarProperty Name="object_no" ColumnName="object_no" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -514,7 +533,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ObjectTypes">
-            <EntityTypeMapping TypeName="Data.DAL.ObjectType">
+            <EntityTypeMapping TypeName="DBModel.ObjectType">
               <MappingFragment StoreEntitySet="ObjectTypes">
                 <ScalarProperty Name="object_code" ColumnName="object_code" />
                 <ScalarProperty Name="object_name" ColumnName="object_name" />
@@ -522,16 +541,16 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Personels">
-            <EntityTypeMapping TypeName="Data.DAL.Personel">
+            <EntityTypeMapping TypeName="DBModel.Personel">
               <MappingFragment StoreEntitySet="Personel">
-                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
+                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="last_name" ColumnName="last_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Requests">
-            <EntityTypeMapping TypeName="Data.DAL.Request">
+            <EntityTypeMapping TypeName="DBModel.Request">
               <MappingFragment StoreEntitySet="Requests">
                 <ScalarProperty Name="request_id" ColumnName="request_id" />
                 <ScalarProperty Name="decription" ColumnName="decription" />
@@ -540,14 +559,24 @@
                 <ScalarProperty Name="registration_date" ColumnName="registration_date" />
                 <ScalarProperty Name="finish_cancel_date" ColumnName="finish_cancel_date" />
                 <ScalarProperty Name="object_no" ColumnName="object_no" />
-                <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+                <ScalarProperty Name="manager" ColumnName="manager" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="Data.DAL.User">
+            <EntityTypeMapping TypeName="DBModel.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="personel_id" ColumnName="personel_id" />
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="password_salt" ColumnName="password_salt" />

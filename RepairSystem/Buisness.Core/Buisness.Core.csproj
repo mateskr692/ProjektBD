@@ -44,9 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappers\ActivitiesMapper.cs" />
+    <Compile Include="Mappers\ClientMapper.cs" />
+    <Compile Include="Mappers\ObjectMapper.cs" />
+    <Compile Include="Mappers\RequestMapper.cs" />
     <Compile Include="Mappers\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Interfaces\IUserService.cs" />
+    <Compile Include="Services\ActivityService.cs" />
+    <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\ObjectService.cs" />
+    <Compile Include="Services\RequestService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>

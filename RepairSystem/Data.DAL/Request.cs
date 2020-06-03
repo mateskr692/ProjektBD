@@ -27,7 +27,7 @@ namespace Data.DAL
         public System.DateTime registration_date { get; set; }
         public Nullable<System.DateTime> finish_cancel_date { get; set; }
         public long object_no { get; set; }
-        public long manager_id { get; set; }
+        public string manager { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activities { get; set; }

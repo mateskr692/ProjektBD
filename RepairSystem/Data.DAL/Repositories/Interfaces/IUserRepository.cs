@@ -9,5 +9,6 @@ namespace Data.DAL.Repositories
     public interface IUserRepository : IRepository<User>
     {
         User GetByUsername( string username );
+        IEnumerable<User> GetUsers( string nameFilter );
     }
 }

@@ -41,8 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Activities\ActivityFilterModel.cs" />
+    <Compile Include="Models\Activities\ActivityInfoModel.cs" />
+    <Compile Include="Models\Activities\ActivityModel.cs" />
+    <Compile Include="Models\Activities\ActivityTypeModel.cs" />
+    <Compile Include="Models\Activities\WorkerActivityFilterModel.cs" />
+    <Compile Include="Models\Clients\ClientInfoModel.cs" />
+    <Compile Include="Models\Clients\ClientModel.cs" />
+    <Compile Include="Models\Objects\ObjectModel.cs" />
+    <Compile Include="Models\Objects\ObjectTypeModel.cs" />
+    <Compile Include="Models\Requests\RequestFiltersModel.cs" />
+    <Compile Include="Models\Requests\RequestInfoModel.cs" />
+    <Compile Include="Models\Requests\RequestModel.cs" />
     <Compile Include="Models\Users\UserInfoModel.cs" />
     <Compile Include="Models\Users\UserLoginModel.cs" />
+    <Compile Include="Models\Users\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WResult.cs" />
   </ItemGroup>
