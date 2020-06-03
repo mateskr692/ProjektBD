@@ -22,5 +22,13 @@ namespace Data.DAL.Repositories
                                      .Take( 10 );
         }
 
+        public IEnumerable<User> GetWorkers( string nameFilter )
+        {
+            return this.Context.Users.Include( u => u.Personel )
+                                     .Where( u => u.role == "WRK")
+                                     .Where( u => u.username.Contains( nameFilter ) || u.Personel.first_name.Contains( nameFilter ) || u.Personel.last_name.Contains( nameFilter ) )
+                                     .Take( 10 );
+        }
+
     }
 }

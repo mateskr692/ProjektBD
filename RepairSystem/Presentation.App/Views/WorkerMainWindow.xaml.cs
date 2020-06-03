@@ -27,6 +27,8 @@ namespace Presentation.App.Views.Worker
         public WorkerMainWindow()
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.viewModel = new WorkerMainViewModel();
             this.DataContext = this.viewModel;
 

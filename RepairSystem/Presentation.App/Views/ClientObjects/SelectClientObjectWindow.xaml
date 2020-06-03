@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         
         xmlns:controls="clr-namespace:Presentation.App.Controls"
-        Title="Select Client Object" Height="450" Width="800">
+        Title="Select Client Object" Height="450" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -28,16 +28,16 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="8*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="8*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" MaxWidth="250" Margin="0,20,0,20">
+                    <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>

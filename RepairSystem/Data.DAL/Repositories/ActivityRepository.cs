@@ -23,7 +23,7 @@ namespace Data.DAL.Repositories
                 activities = activities.Where( a => a.registration_date >= d1 && a.registration_date < d2 );
             }
             if ( !string.IsNullOrEmpty( status ) )
-                activities = activities.Where( r => r.status == status );
+                activities = activities.Where( r => r.status.Contains( status ) );
             if ( !string.IsNullOrEmpty( type ) )
                 activities = activities.Where( r => r.activity_code.Contains(type) || r.ActivityType.activity_name.Contains(type) );
             if ( !string.IsNullOrEmpty( worker ) )

@@ -26,6 +26,8 @@ namespace Presentation.App.Views.ActivityTypes
         public SelectActivityTypeWindow( ref ActivityTypeModel activityTypeModel)
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.viewModel = new SelectActivityTypeViewModel( ref activityTypeModel );
             this.DataContext = this.viewModel;
             this.viewModel.CloseWindow += delegate {

@@ -8,7 +8,7 @@
         xmlns:controls="clr-namespace:Presentation.App.Controls"
         
         mc:Ignorable="d"
-        Title="Activities" Height="600" Width="800"
+        Title="Activities" Height="500" Width="700"
         WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -30,21 +30,21 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="8*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="8*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" MaxWidth="250" Margin="0,20,0,20">
+                    <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
@@ -58,35 +58,44 @@
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="5"/>
                                 <RowDefinition Height="auto"/>
+
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="20"/>
+
                             </Grid.RowDefinitions>
 
-                            <TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap">Queue position</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="0" TextWrapping="Wrap">Queue position</TextBlock>
                             <TextBlock Grid.Column="2" Grid.Row="0" TextWrapping="Wrap" Text="{Binding Path=ActivitySequenceNo, Mode=OneWay}"/>
                             
-                            <TextBlock Grid.Column="0" Grid.Row="2" TextWrapping="Wrap">Status</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="2" TextWrapping="Wrap">Status</TextBlock>
                             <TextBlock Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Path=ActivityStatus, Mode=OneWay}"/>
                             
-                            <TextBlock Grid.Column="0" Grid.Row="4" TextWrapping="Wrap">Regestration date</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="4" TextWrapping="Wrap">Regestration date</TextBlock>
                             <TextBlock Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" Text="{Binding Path=ActivityStartDate, Mode=OneWay}"/>
                             
-                            <TextBlock Grid.Column="0" Grid.Row="6" TextWrapping="Wrap">Finish date</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="6" TextWrapping="Wrap">Finish date</TextBlock>
                             <TextBlock Grid.Column="2" Grid.Row="6" TextWrapping="Wrap" Text="{Binding Path=ActivityFinishDate, Mode=OneWay}"/>
 
-                            <TextBlock Grid.Column="0" Grid.Row="8" TextWrapping="Wrap">Activity Type</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="8" TextWrapping="Wrap">Activity Type</TextBlock>
                             <TextBlock Grid.Column="2" Grid.Row="8" TextWrapping="Wrap" Text="{Binding Path=ActivityType, Mode=OneWay}"/>
 
-                            <TextBlock Grid.Column="0" Grid.Row="10" TextWrapping="Wrap">Worker</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="10" TextWrapping="Wrap">Worker</TextBlock>
                             <TextBlock Grid.Column="2" Grid.Row="10" TextWrapping="Wrap" Text="{Binding Path=ActivityWorkerName, Mode=OneWay}"/>
-                            <Button Grid.Column="2" Grid.Row="10" HorizontalAlignment="Right" Command="{Binding Path=SelectWorkerCommand}">Browse</Button>
-                        </Grid>
-                        <Rectangle Height="20"/>
-                        <TextBlock>Description:</TextBlock>
-                        <TextBlock MinHeight="50" Width="250" Text="{Binding Path=ActivityDescription, Mode=OneWay}" TextWrapping="Wrap"/>
-                        <Rectangle Height="20"/>
-                        <TextBlock>Results:</TextBlock>
-                        <TextBlock MinHeight="50" Width="250" Text="{Binding Path=ActivityResult, Mode=OneWay}" TextWrapping="Wrap"/>
-                        <Rectangle Height="30"/>
+                            <Button Grid.Column="2" Grid.Row="10" Command="{Binding Path=SelectWorkerCommand}" HorizontalAlignment="Right">Browse</Button>
 
+                            <TextBlock Grid.Column="1" Grid.Row="12">Description:</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="13" MinHeight="50" Width="250" Text="{Binding Path=ActivityDescription, Mode=OneWay}" TextWrapping="Wrap"/>
+
+                            <TextBlock Grid.Column="1" Grid.Row="15">Results:</TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="16" MinHeight="50" Width="250" Text="{Binding Path=ActivityResult, Mode=OneWay}" TextWrapping="Wrap"/>
+
+                        </Grid>
                         <Grid>
                             <Button Padding="5" Width="100" Command="{Binding Path=FinishActivityCommand}" HorizontalAlignment="Left" >Finish Activity</Button>
                             <Button Padding="5" Width="100" Command="{Binding Path=CancelActivityCommand}" HorizontalAlignment="Right" >Cancel Activity</Button>

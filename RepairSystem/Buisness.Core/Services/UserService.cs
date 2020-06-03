@@ -79,6 +79,18 @@ namespace Buisness.Core.Services
             }
         }
 
+        public WResult<IEnumerable<UserInfoModel>> GetWorkerList( string nameFilter )
+        {
+            if ( string.IsNullOrEmpty( nameFilter ) )
+                return new WResult<IEnumerable<UserInfoModel>>( NoFilterErrorMessage );
+
+            using ( var uow = new UnitOfWork() )
+            {
+                var users = uow.Users.GetWorkers( nameFilter );
+                return new WResult<IEnumerable<UserInfoModel>>( UserMapper.Default.Map<IEnumerable<UserInfoModel>>( users ) );
+            }
+        }
+
         public WResult<UserModel> GetSingleUser( string userName )
         {
             if ( string.IsNullOrEmpty( userName ) )

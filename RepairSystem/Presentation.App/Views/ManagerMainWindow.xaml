@@ -8,7 +8,7 @@
         xmlns:controls="clr-namespace:Presentation.App.Controls"
         
         mc:Ignorable="d"
-        Title="Repair System : Manager Panel" Height="604" Width="796.8"
+        Title="Repair System : Manager Panel" Height="604" Width="700"
         WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
@@ -39,21 +39,21 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="8*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="8*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" MaxWidth="250" Margin="0,20,0,20">
+                                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -65,13 +65,13 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap">Client Name</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="0" TextWrapping="Wrap">Client Name</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="0" TextWrapping="Wrap" Text="{Binding Path=ClientName, Mode=OneWay}"/>
-                                        <TextBlock Grid.Column="0" Grid.Row="2" TextWrapping="Wrap">First Name</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="2" TextWrapping="Wrap">First Name</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Path=ClientFirstName, Mode=OneWay}"/>
-                                        <TextBlock Grid.Column="0" Grid.Row="4" TextWrapping="Wrap">Last Name</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="4" TextWrapping="Wrap">Last Name</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" Text="{Binding Path=ClientLastName, Mode=OneWay}"/>
-                                        <TextBlock Grid.Column="0" Grid.Row="6" TextWrapping="Wrap">Contact</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="6" TextWrapping="Wrap">Contact</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="6" TextWrapping="Wrap" Text="{Binding Path=ClientContact, Mode=OneWay}"/>
                                     </Grid>
                                     <Rectangle Height="30"/>
@@ -109,21 +109,21 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="8*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="8*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" MaxWidth="250" Margin="0,20,0,20">
+                                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical"  VerticalAlignment="Center">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -137,29 +137,41 @@
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="5"/>
                                             <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="20"/>
+                                            
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="20"/>
+
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="20"/>
+
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Grid.Column="0" Grid.Row="0"  TextWrapping="Wrap">Client</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="0"  TextWrapping="Wrap">Client</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="0"  TextWrapping="Wrap" Text="{Binding Path=RequestClient, Mode=OneWay}"/>
-                                        <TextBlock Grid.Column="0" Grid.Row="2"  TextWrapping="Wrap">Object</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="2"  TextWrapping="Wrap">Object</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="2"  TextWrapping="Wrap" Text="{Binding Path=RequestObject, Mode=OneWay}"/>
-                                        <TextBlock Grid.Column="0" Grid.Row="4"  TextWrapping="Wrap">Manager</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="4"  TextWrapping="Wrap">Manager</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="4"  TextWrapping="Wrap" Text="{Binding Path=RequestManager, Mode=OneWay}"/>
-                                        <TextBlock Grid.Column="0" Grid.Row="6"  TextWrapping="Wrap">Start Date</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="6"  TextWrapping="Wrap">Start Date</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="6"  TextWrapping="Wrap" Text="{Binding Path=RequestStart, Mode=OneWay}"/>
-                                        <TextBlock Grid.Column="0" Grid.Row="8"  TextWrapping="Wrap">End Date</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="8"  TextWrapping="Wrap">End Date</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="8"  TextWrapping="Wrap" Text="{Binding Path=RequestEnd, Mode=OneWay}"/>
-                                        <TextBlock Grid.Column="0" Grid.Row="10" TextWrapping="Wrap">Status</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="10" TextWrapping="Wrap">Status</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="10" TextWrapping="Wrap" Text="{Binding Path=RequestStatus, Mode=OneWay}"/>
+
+                                        <TextBlock Grid.Column="1" Grid.Row="12">Description:</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="13" Height="50" Width="250" Text="{Binding Path=RequestDescription, Mode=OneWay}" TextWrapping="Wrap"/>
+
+                                        <TextBlock Grid.Column="1" Grid.Row="14">Results:</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="15" Height="50" Width="250" Text="{Binding Path=RequestResult, Mode=OneWay}" TextWrapping="Wrap"/>
+
+                                        <Button Padding="5" Grid.Column="1" Grid.Row="17" Width="100" Command="{Binding Path=ShowRequestActivitiesCommand}" HorizontalAlignment="Left">Show activities</Button>
                                     </Grid>
-                                    <Rectangle Height="20"/>
-                                    <TextBlock>Description:</TextBlock>
-                                    <TextBlock Height="50" Width="250" Text="{Binding Path=RequestDescription, Mode=OneWay}" TextWrapping="Wrap"/>
-                                    <Rectangle Height="20"/>
-                                    <TextBlock>Results:</TextBlock>
-                                    <TextBlock Height="50" Width="250" Text="{Binding Path=RequestResult, Mode=OneWay}" TextWrapping="Wrap"/>
-                                    <Rectangle Height="30"/>
-                                    <Button Padding="5" Width="100" Command="{Binding Path=ShowRequestActivitiesCommand}" HorizontalAlignment="Left">Show activities</Button>
+
                                     <Rectangle Height="20"/>
                                     <Grid>
                                         <Button Padding="5" Width="100" Command="{Binding Path=FinishRequestCommand}" HorizontalAlignment="Left" >Finish request</Button>

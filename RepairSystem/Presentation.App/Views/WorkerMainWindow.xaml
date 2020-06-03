@@ -8,7 +8,7 @@
         xmlns:controls="clr-namespace:Presentation.App.Controls"
         
         mc:Ignorable="d"
-        Title="Repair System : Worker Panel" Height="450" Width="800"
+        Title="Repair System : Worker Panel" Height="450" Width="700"
         WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
@@ -39,21 +39,21 @@
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="8*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="8*"/>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" MaxWidth="250" Margin="0,20,0,20">
+                                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical"  VerticalAlignment="Center">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="50"/>
-                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="2*"/>
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -61,25 +61,33 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="5"/>
                                             <RowDefinition Height="auto" />
+                                        
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="20"/>
+
+
                                         </Grid.RowDefinitions>
 
-                                        <TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap">Queue position</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="0" TextWrapping="Wrap">Queue position</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="0" TextWrapping="Wrap" Text="{Binding Path=ActivitySequenceNo, Mode=OneWay}"/>
 
-                                        <TextBlock Grid.Column="0" Grid.Row="2" TextWrapping="Wrap">Regestration date</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="2" TextWrapping="Wrap">Regestration date</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Path=ActivityStartDate, Mode=OneWay}"/>
 
-                                        <TextBlock Grid.Column="0" Grid.Row="4" TextWrapping="Wrap">Activity Type</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="4" TextWrapping="Wrap">Activity Type</TextBlock>
                                         <TextBlock Grid.Column="2" Grid.Row="4" TextWrapping="Wrap" Text="{Binding Path=ActivityType, Mode=OneWay}"/>
 
-                                    </Grid>
-                                    <Rectangle Height="20"/>
-                                    <TextBlock>Description:</TextBlock>
-                                    
-                                    <TextBlock MinHeight="50" Width="250" Text="{Binding Path=ActivityDescription, Mode=OneWay}" TextWrapping="Wrap"/>
+                                        <TextBlock Grid.Column="1" Grid.Row="6">Description:</TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="7" MinHeight="50" Width="250" Text="{Binding Path=ActivityDescription, Mode=OneWay}" TextWrapping="Wrap"/>
 
-                                    <Button Padding="5" Width="100" Command="{Binding Path=ShowRequestCommand}" HorizontalAlignment="Left" >Show Request</Button>
-                                    <Rectangle Height="20"/>
+                                        <Button Grid.Column="1" Grid.Row="9" Padding="5" Width="100" Command="{Binding Path=ShowRequestCommand}" HorizontalAlignment="Left" >Show Request</Button>
+                                    
+                                    </Grid>
                                     <Grid>
                                         <Button Padding="5" Width="100" Command="{Binding Path=FinishActivityCommand}" HorizontalAlignment="Left" >Finish Activity</Button>
                                         <Button Padding="5" Width="100" Command="{Binding Path=CancelActivityCommand}" HorizontalAlignment="Right" >Cancel Activity</Button>

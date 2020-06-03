@@ -27,6 +27,7 @@ namespace Presentation.App.Views.ClientObjects
         public SelectClientObjectWindow( ClientModel client, ref ObjectModel objectModel )
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             this.viewModel = new SelectClientObjectViewModel( client, ref objectModel );
             this.DataContext = this.viewModel;

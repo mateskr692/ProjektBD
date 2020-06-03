@@ -58,7 +58,7 @@ namespace Presentation.App.ViewModels.Users
         // ---------- Implementations ---------- 
         private void FilterWorkers()
         {
-            var response = this.UserService.GetUserList( this.WorkerNameFilter );
+            var response = this.UserService.GetWorkerList( this.WorkerNameFilter );
             if ( response.Status == ResultStatus.Failed )
             {
                 this.ErrorMessage = string.Join( "\n", response.Errors );

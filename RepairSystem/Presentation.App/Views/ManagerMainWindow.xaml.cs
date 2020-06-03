@@ -27,6 +27,8 @@ namespace Presentation.App.Views
         public ManagerMainWindow()
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.viewModel = new ManagerMainViewModel();
             this.DataContext = this.viewModel;
 

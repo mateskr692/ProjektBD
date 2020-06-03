@@ -410,9 +410,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\WorkerViews\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Buisness.Contracts\Buisness.Contracts.csproj">
       <Project>{9C3AA05B-F654-4FE9-B2DD-1A2E6A79ED26}</Project>

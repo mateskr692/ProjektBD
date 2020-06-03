@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace Presentation.App.Views.ObjectTypes
     /// <summary>
     /// Interaction logic for SelectObjectTypeWindow.xaml
     /// </summary>
+    [PrincipalPermission( SecurityAction.Demand )]
     public partial class SelectObjectTypeWindow : Window
     {
         private SelectObjectTypeViewModel viewModel;
@@ -26,6 +28,8 @@ namespace Presentation.App.Views.ObjectTypes
         public SelectObjectTypeWindow( ref ObjectTypeModel typeModel )
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.viewModel = new SelectObjectTypeViewModel( ref typeModel );
             this.DataContext = this.viewModel;
 

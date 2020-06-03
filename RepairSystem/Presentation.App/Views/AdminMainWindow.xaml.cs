@@ -28,6 +28,7 @@ namespace Presentation.App.Views
         public AdminMainWindow()
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             this.viewModel = new AdminMainViewModel();
             this.DataContext = this.viewModel;

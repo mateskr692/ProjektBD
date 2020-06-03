@@ -30,9 +30,10 @@ namespace Presentation.App.Views
         public LoginWindow()
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             this.ViewModel = new UserLoginViewModel();
-            this.ViewModel.CloseWindow += delegate { this.Close(); };
+            this.ViewModel.CloseWindow += delegate { this.OnClose( null, null ); this.Close(); };
             this.DataContext = this.ViewModel;
         }
 

@@ -22,7 +22,7 @@ namespace Data.DAL.Repositories
                 requests = requests.Where( r => r.registration_date >= d1 && r.registration_date < d2 );
             }
             if ( !string.IsNullOrEmpty( status ) )
-                requests = requests.Where( r => r.status == status );
+                requests = requests.Where( r => r.status.Contains( status ) );
             if ( !string.IsNullOrEmpty( obj ) )
                 requests = requests.Where( r => r.Object.name.Contains( obj ) );
             if ( !string.IsNullOrEmpty( manager ) )

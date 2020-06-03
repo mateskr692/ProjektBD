@@ -15,15 +15,14 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="160*"/>
-                <ColumnDefinition Width="65*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2"/>
-                <ColumnDefinition Width="562*" MinWidth="250"/>
+                <ColumnDefinition Width="5*" MinWidth="250"/>
             </Grid.ColumnDefinitions>
 
-            <controls:ActivityTypesSearchPanel Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,1.4,0.4"/>
-            <GridSplitter Grid.Column="2" Width="2" HorizontalAlignment="Stretch" Background="{StaticResource BrushBgLevel2}" Grid.ColumnSpan="2" Margin="0.2,0,561,0.4"/>
-            <Grid Grid.Column="2" Grid.ColumnSpan="2" Margin="1.2,0,0,0.4">
+            <controls:ActivityTypesSearchPanel Grid.Column="0"/>
+            <GridSplitter Grid.Column="1" Width="2" HorizontalAlignment="Stretch" Background="{StaticResource BrushBgLevel2}"/>
+            <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="2"/>
@@ -34,16 +33,16 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="*" MinWidth="250"/>
+                            <ColumnDefinition Width="8*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="8*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical" MaxWidth="250" Margin="0,20,0,20">
+                        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Vertical"  VerticalAlignment="Center">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>

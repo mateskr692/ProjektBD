@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace Presentation.App.Views.Admin
     /// <summary>
     /// Logika interakcji dla klasy TypeCreate.xaml
     /// </summary>
+    [PrincipalPermission( SecurityAction.Demand )]
     public partial class AddClientObjectsWindow : Window
     {
         AddClientObjectViewModel viewmodel;
@@ -27,6 +29,7 @@ namespace Presentation.App.Views.Admin
         public AddClientObjectsWindow( ClientModel clientModel)
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             this.viewmodel = new AddClientObjectViewModel( clientModel );
             this.DataContext = this.viewmodel;

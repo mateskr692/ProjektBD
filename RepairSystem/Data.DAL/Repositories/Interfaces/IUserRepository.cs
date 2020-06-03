@@ -10,5 +10,6 @@ namespace Data.DAL.Repositories
     {
         User GetByUsername( string username );
         IEnumerable<User> GetUsers( string nameFilter );
+        IEnumerable<User> GetWorkers( string nameFilter );
     }
 }

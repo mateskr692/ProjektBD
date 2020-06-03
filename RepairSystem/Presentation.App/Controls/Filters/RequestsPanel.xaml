@@ -59,13 +59,14 @@
         <GridSplitter Grid.Row="1" Height="2" HorizontalAlignment="Stretch" Background="{StaticResource BrushBgLevel2}"/>
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"/>
 
-        <StackPanel  Grid.Row="3" Background="Transparent" >
+    
 
+        <StackPanel  Grid.Row="3" Background="Transparent" Margin="10" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -77,28 +78,32 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="auto"/>
+
+
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                
+
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Client"/>
-                <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Path=RequestClientFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}" Width="100"/>
+                <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Path=RequestClientFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}"/>
 
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="Manager"/>
-                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=RequestManagerFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}" Width="100"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=RequestManagerFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}"/>
 
                 <TextBlock Grid.Row="4" Grid.Column="0" Text="Object Name"/>
-                <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=RequestObjectFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}" Width="100"/>
+                <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=RequestObjectFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}" />
 
                 <TextBlock Grid.Row="6" Grid.Column="0" Text="Status"/>
-                <TextBox Grid.Row="6" Grid.Column="2" Text="{Binding Path=RequestStatusFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}" Width="100"/>
+                <TextBox Grid.Row="6" Grid.Column="2" Text="{Binding Path=RequestStatusFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}" />
 
                 <TextBlock Grid.Row="8" Grid.Column="0" Text="Registration Date"/>
-                <TextBox Grid.Row="8" Grid.Column="2" Text="{Binding Path=RequestDateFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}" Width="100"/>
-
-                <Button Content="Filter" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="10"  />
+                <TextBox Grid.Row="8" Grid.Column="2" Text="{Binding Path=RequestDateFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}" />
+                
+                <Button Grid.Row="10"  Grid.Column="0" Grid.ColumnSpan="3" Padding="5"  Content="Filter"/>
             </Grid>
-            
         </StackPanel>
+        
     </Grid>
 </UserControl>

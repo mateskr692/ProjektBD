@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace Presentation.App.Views.Requests
     /// <summary>
     /// Interaction logic for FinishRequestWindow.xaml
     /// </summary>
+    [PrincipalPermission( SecurityAction.Demand )]
     public partial class FinishRequestWindow : Window
     {
         FinishRequestViewModel viewModel;
@@ -26,6 +28,8 @@ namespace Presentation.App.Views.Requests
         public FinishRequestWindow( RequestModel requestModel )
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.viewModel = new FinishRequestViewModel( requestModel );
             this.DataContext = this.viewModel;
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace Presentation.App.Views.Requests
     /// <summary>
     /// Interaction logic for FinishRequestWindow.xaml
     /// </summary>
+    [PrincipalPermission( SecurityAction.Demand )]
     public partial class CancelRequestActivityWindow : Window
     {
         CancelRequestActivityViewModel viewModel;
@@ -27,6 +29,8 @@ namespace Presentation.App.Views.Requests
         public CancelRequestActivityWindow( ActivityModel activityModel )
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.viewModel = new CancelRequestActivityViewModel( activityModel );
             this.DataContext = this.viewModel;
 

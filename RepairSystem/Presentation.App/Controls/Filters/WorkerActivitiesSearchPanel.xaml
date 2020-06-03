@@ -59,13 +59,12 @@
         <GridSplitter Grid.Row="1" Height="2" HorizontalAlignment="Stretch" Background="{StaticResource BrushBgLevel2}"/>
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"/>
 
-        <StackPanel  Grid.Row="3" Background="Transparent" >
-
+        <StackPanel  Grid.Row="3" Background="Transparent" Margin="10" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -73,18 +72,17 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="auto"/>
-
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Date"/>
-                <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Path=ActivityDateFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}" Width="100"/>
+                <TextBox Grid.Row="0" Grid.Column="2" Text="{Binding Path=ActivityDateFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}"/>
 
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="Activity Type"/>
-                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=ActivityTypeFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}" Width="100"/>
-
-                <Button Content="Filter" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4"  />
+                <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=ActivityTypeFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}"/>
+                
+                <Button Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="3" Padding="5"  Content="Filter"/>
             </Grid>
-
         </StackPanel>
+
     </Grid>
 </UserControl>

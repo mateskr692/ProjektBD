@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,6 +19,7 @@ namespace Presentation.App.Views.ManagerViews
     /// <summary>
     /// Interaction logic for AddRequestWindow.xaml
     /// </summary>
+    [PrincipalPermission( SecurityAction.Demand )]
     public partial class AddRequestWindow : Window
     {
         AddRequestViewModel viewModel;
@@ -25,6 +27,8 @@ namespace Presentation.App.Views.ManagerViews
         public AddRequestWindow()
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.viewModel = new AddRequestViewModel();
             this.DataContext = this.viewModel;
 

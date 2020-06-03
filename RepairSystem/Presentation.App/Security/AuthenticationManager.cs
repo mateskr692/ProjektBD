@@ -12,21 +12,29 @@ namespace Presentation.App.Security
     {
         internal static void SignIn( string userName, string role )
         {
-            Thread.CurrentPrincipal = new ClaimsPrincipal(
-                new ClaimsIdentity( new[] {
-                new Claim(ClaimTypes.Name, userName),
-                new Claim(ClaimTypes.Role, role),
-            }, "ApplicationCookie" ) );
+            AppDomain.CurrentDomain.SetThreadPrincipal( 
+                new ClaimsPrincipal(
+                    new ClaimsIdentity( new[] {
+                        new Claim(ClaimTypes.Name, userName),
+                        new Claim(ClaimTypes.Role, role),
+                    }, "ApplicationCookie" ) 
+                )
+            );
+
         }
 
-        internal static void SignOut()
-        {
-            Thread.CurrentPrincipal = new ClaimsPrincipal(
-                new ClaimsIdentity( new[] {
-                new Claim(ClaimTypes.Name, string.Empty),
-                new Claim(ClaimTypes.Role, string.Empty),
-            }, "ApplicationCookie" ) );
-        }
+        //internal static void SignOut()
+        //{
+        //    AppDomain.CurrentDomain.SetThreadPrincipal(
+        //       new ClaimsPrincipal(
+        //           new ClaimsIdentity( new[] {
+        //                new Claim(ClaimTypes.Name, string.Empty),
+        //                new Claim(ClaimTypes.Role, string.Empty),
+        //           }, "ApplicationCookie" )
+        //       )
+        //   );
+
+        //}
 
         internal static string UserName()
         {

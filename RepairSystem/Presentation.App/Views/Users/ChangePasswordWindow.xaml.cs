@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,19 +19,22 @@ namespace Presentation.App.Views.AdminViews
     /// <summary>
     /// Interaction logic for ChangePasswordWindow.xaml
     /// </summary>
+    [PrincipalPermission( SecurityAction.Demand )]
     public partial class ChangePasswordWindow : Window
     {
         ChangeUserPasswordViewModel viewModel;
 
         public ChangePasswordWindow( string userName )
         {
+            this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.viewModel = new ChangeUserPasswordViewModel( userName );
             this.DataContext = this.viewModel;
 
             this.viewModel.CloseWindow += delegate {
                 this.Close();
             };
-            this.InitializeComponent();
         }
     }
 }

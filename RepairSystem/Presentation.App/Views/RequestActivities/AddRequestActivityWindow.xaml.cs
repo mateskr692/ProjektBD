@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace Presentation.App.Views.Manager
     /// <summary>
     /// Logika interakcji dla klasy ActivityCreateEdit.xaml
     /// </summary>
+    [PrincipalPermission( SecurityAction.Demand )]
     public partial class AddRequestActivityWindow : Window
     {
         AddRequestActivityViewModel viewModel;
@@ -26,6 +28,8 @@ namespace Presentation.App.Views.Manager
         public AddRequestActivityWindow( RequestModel requestModel)
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.viewModel = new AddRequestActivityViewModel( requestModel );
             this.DataContext = this.viewModel;
             this.viewModel.CloseWindow += delegate {

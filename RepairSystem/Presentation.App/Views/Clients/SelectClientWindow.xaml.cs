@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,6 +20,7 @@ namespace Presentation.App.Views.Clients
     /// <summary>
     /// Interaction logic for SelectClientWindow.xaml
     /// </summary>
+    [PrincipalPermission( SecurityAction.Demand )]
     public partial class SelectClientWindow : Window
     {
         SelectClientViewModel viewModel;
@@ -26,6 +28,7 @@ namespace Presentation.App.Views.Clients
         public SelectClientWindow( ref ClientModel clientModel )
         {
             this.InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             this.viewModel = new SelectClientViewModel(ref clientModel);
             this.DataContext = this.viewModel;
