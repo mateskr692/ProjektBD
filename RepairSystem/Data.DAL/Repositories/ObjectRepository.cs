@@ -14,9 +14,11 @@ namespace Data.DAL.Repositories
 
         public IEnumerable<Object> GetClientObjects( long clientId, string nameFilter)
         {
-            return this.Context.Clients.Where( c => c.client_id == clientId ).SingleOrDefault()
-                               .Objects.Where( o => o.name.Contains( nameFilter ) || o.object_code.Contains( nameFilter ) || o.ObjectType.object_name.Contains( nameFilter ) )
-                               .Take( 10 );
+            IQueryable<Object> clientObjects = this.Context.Objects.Where( o => o.client_id == clientId );
+            if ( !string.IsNullOrEmpty( nameFilter ) )
+                clientObjects = clientObjects.Where( o => o.name.Contains( nameFilter ) || o.object_code.Contains( nameFilter ) || o.ObjectType.object_name.Contains( nameFilter ) );
+
+            return clientObjects.OrderBy( o => o.name );
         }
 
         public Object GetById( long Id )

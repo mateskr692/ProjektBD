@@ -7,6 +7,8 @@ using System.Text;
 using Buisness.Contracts;
 using Buisness.Contracts.Models;
 using Buisness.Core.Mappers;
+using Common;
+using Common.Enums;
 using Data.DAL;
 using Data.DAL.UnitOfWork;
 
@@ -19,6 +21,7 @@ namespace Buisness.Core.Services
         const string InvalidPasswordErrorMessage = "Invalid Password";
         const string NoFilterErrorMessage = "Filter not specified";
         const string userAlreadyExistsErrorMEssage = "userName already taken";
+        const string InactiveUserErrorMessage = "User account has been deactivated";
 
 
         public WResult<UserModel> ValidateUserCredentials( UserLoginModel userLoginModel )
@@ -33,6 +36,9 @@ namespace Buisness.Core.Services
                 var user = uow.Users.GetByUsername( userLoginModel.Login );
                 if ( user == null )
                     return new WResult<UserModel>( UserDoesNotExistErrorMessage );
+
+                if ( user.active == CodesDictionary.AccountStatus( AccountStatus.Inactive ) )
+                    return new WResult<UserModel>( InactiveUserErrorMessage );
 
                 var hashPassword = sha256.ComputeHash( Encoding.Unicode.GetBytes( userLoginModel.Password ).Concat( user.password_salt ).ToArray() );
                 return user.password.SequenceEqual( hashPassword )
@@ -69,9 +75,6 @@ namespace Buisness.Core.Services
 
         public WResult<IEnumerable<UserInfoModel>> GetUserList( string nameFilter )
         {
-            if ( string.IsNullOrEmpty( nameFilter ) )
-                return new WResult<IEnumerable<UserInfoModel>>( NoFilterErrorMessage );
-
             using ( var uow = new UnitOfWork() )
             {
                 var users = uow.Users.GetUsers( nameFilter );
@@ -81,9 +84,6 @@ namespace Buisness.Core.Services
 
         public WResult<IEnumerable<UserInfoModel>> GetWorkerList( string nameFilter )
         {
-            if ( string.IsNullOrEmpty( nameFilter ) )
-                return new WResult<IEnumerable<UserInfoModel>>( NoFilterErrorMessage );
-
             using ( var uow = new UnitOfWork() )
             {
                 var users = uow.Users.GetWorkers( nameFilter );

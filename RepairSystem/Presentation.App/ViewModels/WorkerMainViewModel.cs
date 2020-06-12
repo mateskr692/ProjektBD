@@ -30,12 +30,16 @@ namespace Presentation.App.ViewModels
             this.CancelActivityCommand = new RelayCommand( this.CancelActivity, this.CanCancelActivity );
             this.FinishActivityCommand = new RelayCommand( this.FinishActivity, this.CanFinishActivity );
             this.ShowRequestCommand = new RelayCommand( this.ShowRequest, this.CanShowRequest );
+
+            //this.OnPropertyChanged( "ActivityStatusFilter" );
         }
 
         #region RequestActivities Interface
         // ---------- Bindings -----------
         public string ActivityTypeFilter { set { this.ActivityFilter.ActivityType = value; this.FilterActivities(); } }
         public string ActivityDateFilter { set { this.ActivityFilter.RegistrationDate = value; this.FilterActivities(); } }
+        public string ActivityStatusFilter { set { this.ActivityFilter.ActivityStatus = value; this.FilterActivities(); }
+                                             get => this.ActivityFilter.ActivityStatus; }
 
         private List<ActivityInfoModel> _ActivityList;
         public List<ActivityInfoModel> ActivityList
@@ -55,6 +59,7 @@ namespace Presentation.App.ViewModels
         public int? ActivitySequenceNo { get => this.SelectedActivity?.SequanceNumber; }
         public string ActivityStartDate { get => this.SelectedActivity?.StartDate.ToString(); }
         public string ActivityType { get => this.SelectedActivity?.ActivityTypeName; }
+        public string ActivityDescription { get => this.SelectedActivity?.Description; }
 
 
         // ---------- Commands -----------

@@ -19,8 +19,11 @@ namespace Data.DAL.Repositories
 
         public IEnumerable<Client> GetClients( string nameFilter )
         {
-            return this.Context.Clients.Where( c => c.name.Contains(nameFilter) ||  c.first_name.Contains( nameFilter ) || c.last_name.Contains( nameFilter ) )
-                                       .Take( 10 );
+            IQueryable<Client> clients = this.Context.Clients;
+            if ( !string.IsNullOrEmpty( nameFilter ) )
+                clients = clients.Where( c => c.name.Contains( nameFilter ) || c.first_name.Contains( nameFilter ) || c.last_name.Contains( nameFilter ) );
+
+            return clients.OrderBy( c => c.name ).Take( 10 );
         }
 
     }

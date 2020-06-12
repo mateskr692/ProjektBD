@@ -23,9 +23,6 @@ namespace Buisness.Core.Services
 
         public WResult<IEnumerable<ActivityTypeModel>> GetActivityTypes( string nameFilter )
         {
-            if ( string.IsNullOrEmpty( nameFilter ) )
-                return new WResult<IEnumerable<ActivityTypeModel>>( NoFilterErrorMessage );
-
             using ( var uow = new UnitOfWork() )
             {
                 var activityTypes = uow.ActivityTypes.GetActivityTypes( nameFilter );
@@ -87,7 +84,7 @@ namespace Buisness.Core.Services
                 if ( request == null )
                     return new WResult<IEnumerable<ActivityInfoModel>>( InvalidRequestErrorMessage );
 
-                var activities = uow.Activities.GetActivities( requestId, filters.WorkerName, filters.Status, parsedDate, filters.Type );
+                var activities = uow.Activities.GetRequestActivities( requestId, filters.WorkerName, filters.Status, parsedDate, filters.Type );
                 return new WResult<IEnumerable<ActivityInfoModel>>( ActivitiesMapper.Default.Map<IEnumerable<ActivityInfoModel>>( activities ) );
             }
         }
@@ -108,7 +105,7 @@ namespace Buisness.Core.Services
                 if ( worker == null )
                     return new WResult<IEnumerable<ActivityInfoModel>>( InvalidWorkerErrorMessage );
 
-                var activities = uow.Activities.GetWorkerActivities( filters.WorkerId, parsedDate, filters.ActivityType );
+                var activities = uow.Activities.GetWorkerActivities( filters.WorkerId, parsedDate, filters.ActivityType, filters.ActivityStatus );
                 return new WResult<IEnumerable<ActivityInfoModel>>( ActivitiesMapper.Default.Map<IEnumerable<ActivityInfoModel>>( activities ) );
             }
         }

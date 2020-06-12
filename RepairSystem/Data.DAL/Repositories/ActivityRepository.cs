@@ -12,7 +12,7 @@ namespace Data.DAL.Repositories
         {
         }
 
-        public IEnumerable<Activity> GetActivities( long requestId, string worker, string status, DateTime? date, string type )
+        public IEnumerable<Activity> GetRequestActivities( long requestId, string worker, string status, DateTime? date, string type )
         {
             IQueryable<Activity> activities = this.Context.Activities.Where( a => a.request_id == requestId );
 
@@ -34,12 +34,12 @@ namespace Data.DAL.Repositories
                     : activities.Where( a => a.Personel.first_name.Contains( worker ) || a.Personel.last_name.Contains( worker ) );
             }
 
-            return activities.Take( 10 );
+            return activities.OrderBy( a => a.registration_date);
         }
 
-        public IEnumerable<Activity> GetWorkerActivities( string worker, DateTime? date, string type )
+        public IEnumerable<Activity> GetWorkerActivities( string worker, DateTime? date, string type, string status )
         {
-            IQueryable<Activity> activities = this.Context.Activities.Where( a => a.status == "OPN" && a.worker == worker );
+            IQueryable<Activity> activities = this.Context.Activities.Where( a => a.worker == worker );
 
             if ( date.HasValue )
             {
@@ -50,7 +50,10 @@ namespace Data.DAL.Repositories
             if ( !string.IsNullOrEmpty( type ) )
                 activities = activities.Where( r => r.activity_code.Contains( type ) || r.ActivityType.activity_name.Contains( type ) );
 
-            return activities.Take( 10 );
+            if ( !string.IsNullOrEmpty( status ) )
+                activities = activities.Where( a => a.status.Contains( status ) );
+
+            return activities.OrderBy( a => a.registration_date).Take( 10 );
         }
 
         public Activity GetActivity( long Id )

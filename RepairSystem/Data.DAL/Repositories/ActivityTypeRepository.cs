@@ -19,8 +19,11 @@ namespace Data.DAL.Repositories
 
         public IEnumerable<ActivityType> GetActivityTypes( string filter )
         {
-            return this.Context.ActivityTypes.Where( a => a.activity_code.Contains( filter ) || a.activity_name.Contains( filter ) )
-                                             .Take( 10 );
+            IQueryable<ActivityType> types = this.Context.ActivityTypes;
+            if ( !string.IsNullOrEmpty( filter ) )
+                types = types.Where( a => a.activity_code.Contains( filter ) || a.activity_name.Contains( filter ) );
+
+            return types.OrderBy( a => a.activity_code );
         }
     }
 }

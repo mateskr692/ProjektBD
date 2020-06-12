@@ -5,9 +5,6 @@ namespace Common
 {
     public static class CodesDictionary
     {
-
-        public readonly static string Administrator = "ADM";
-
         public static UserRole RoleType( string role )
         {
             switch ( role )

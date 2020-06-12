@@ -70,6 +70,8 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="10"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
@@ -79,8 +81,11 @@
 
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="Activity Type"/>
                 <TextBox Grid.Row="2" Grid.Column="2" Text="{Binding Path=ActivityTypeFilter, Mode=OneWayToSource, UpdateSourceTrigger=LostFocus}"/>
-                
-                <Button Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="3" Padding="5"  Content="Filter"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Activity Status"/>
+                <TextBox Grid.Row="4" Grid.Column="2" Text="{Binding Path=ActivityStatusFilter, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+
+                <Button Grid.Row="6"  Grid.Column="0" Grid.ColumnSpan="3" Padding="5"  Content="Filter"/>
             </Grid>
         </StackPanel>
 

@@ -49,6 +49,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
+                            <TextBlock Text="{Binding Path=UserName}"/>
                             <TextBlock Text="{Binding Path=FullName}"/>
                         </StackPanel>
                     </DataTemplate>

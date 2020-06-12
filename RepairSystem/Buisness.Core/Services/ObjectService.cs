@@ -22,9 +22,6 @@ namespace Buisness.Core.Services
 
         public WResult<IEnumerable<ObjectTypeModel>> GetObjectTypes( string nameFilter )
         {
-            if ( string.IsNullOrEmpty( nameFilter ) )
-                return new WResult<IEnumerable<ObjectTypeModel>>( NoFilterErrorMessage );
-
             using ( var uow = new UnitOfWork() )
             {
                 var objectTypes = uow.ObjectTypes.GetObjectTypes( nameFilter );
@@ -72,9 +69,6 @@ namespace Buisness.Core.Services
 
         public WResult<IEnumerable<ObjectModel>> GetClientObjects( long clientId, string nameFilter)
         {
-            if ( string.IsNullOrEmpty( nameFilter ) )
-                return new WResult<IEnumerable<ObjectModel>>( NoFilterErrorMessage );
-
             using ( var uow = new UnitOfWork() )
             {
                 var client = uow.Clients.GetById( clientId );

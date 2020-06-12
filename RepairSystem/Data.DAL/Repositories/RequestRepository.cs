@@ -35,7 +35,7 @@ namespace Data.DAL.Repositories
             if ( !string.IsNullOrEmpty( client ) )
                 requests = requests.Where( r => r.Object.Client.name.Contains( client ) || r.Object.Client.first_name.Contains( client ) || r.Object.Client.last_name.Contains( client ) );
 
-            return requests.Take( 10 );
+            return requests.OrderBy( r=> r.registration_date ).Take( 10 );
         }
 
         public Request GetRequest( long Id )

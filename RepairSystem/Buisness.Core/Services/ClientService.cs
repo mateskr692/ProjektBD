@@ -22,9 +22,6 @@ namespace Buisness.Core.Services
 
         public WResult<IEnumerable<ClientInfoModel>> GetClientList( string nameFilter )
         {
-            if ( string.IsNullOrEmpty( nameFilter ) )
-                return new WResult<IEnumerable<ClientInfoModel>>( NoFilterErrorMessage );
-
             using ( var uow = new UnitOfWork() )
             {
                 var Clients = uow.Clients.GetClients( nameFilter );

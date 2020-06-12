@@ -19,8 +19,11 @@ namespace Data.DAL.Repositories
 
         public IEnumerable<ObjectType> GetObjectTypes( string filter )
         {
-            return this.Context.ObjectTypes.Where( o => o.object_code.Contains( filter ) || o.object_name.Contains( filter ) )
-                                           .Take( 10 );
+            IQueryable<ObjectType> types = this.Context.ObjectTypes;
+            if ( !string.IsNullOrEmpty( filter ) )
+                types = types.Where( o => o.object_code.Contains( filter ) || o.object_name.Contains( filter ) );
+
+            return types.OrderBy( o => o.object_code );
         }
     }
 }
